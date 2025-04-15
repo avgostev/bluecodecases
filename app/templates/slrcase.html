@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content %}
+<div class="container">
+
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for message in messages %}
+		<div class="alert alert-info" role="alert">{{ message }}</div>
+		{% endfor %}
+	{% endif %}
+	{% endwith %}
+<form class="form form-horizontal" method="post" role="form">
+	{{ form.hidden_tag() }}
+	{{ wtf.form_errors(form, hiddens="only") }}
+  
+	{{ wtf.form_field(form.d_slr) }}
+	{{ wtf.form_field(form.result) }}
+	{{ wtf.form_field(form.place) }}
+	{{ wtf.form_field(form.locate) }}
+	{{ wtf.form_field(form.sex) }}
+	{{ wtf.form_field(form.d_bdate) }}
+	<br>
+	{{ wtf.form_field(form.submit, button_map={"submit": "light"}) }}
+	<a class="btn btn-light" href="{{url_for('slrcases')}}">Отмена</a>
+</form>
+</div>
+{% endblock %}

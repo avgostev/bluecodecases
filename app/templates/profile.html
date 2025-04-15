@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col text-center">
+    <h5>Личная страница</h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="card text-dark bg-light mb-3 text-center">
+      <div class="card-header">Случаев СЛР</div>
+      <div class="card-body">
+        <p class="card-text">{{ count_slr_cases }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card text-dark bg-light mb-3 text-center">
+      <div class="card-header">Рейтинг</div>
+      <div class="card-body">
+        <p class="card-text">{{ count_slr_cases }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

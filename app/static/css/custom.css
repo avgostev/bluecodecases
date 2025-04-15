@@ -1,0 +1,19 @@
+.content {
+    padding: 20px;
+    margin-top: 20px;
+}
+.navbar-light {
+    background-color: #72a711;
+}
+
+.btn-light {
+    background-color: #9cc346;
+}
+
+.btn-light:hover {
+    background-color: #72a711;
+}
+
+body {
+    background-color: #EAF9E7;
+}

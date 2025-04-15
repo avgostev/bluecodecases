@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+<a class="btn btn-light mb-3" href="{{url_for('slr_add')}}">Добавить СЛР</a>
+<div class="table-responsive">
+  <table class="table table-sm table-striped caption-top">
+      <thead>
+          <tr>
+            <th scope="col">Дата СЛР</th>
+            <th scope="col">Исход</th>
+            <th scope="col">Место проведения<br>СЛР</th>
+            <th scope="col">Локация СЛР<br>относительно 59 меридиана<br>(от Уральских гор)</th>
+            <th scope="col">Пол пациента</th>
+            <th scope="col">Дата рождения<br>пациента</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+  {% for slr_case in slr_cases %}
+  <tr>
+      <td>{{ slr_case.d_slr_to_str() }}</td>
+      <td>{{ slr_case.result.s_name }}</td>
+      <td>{{ slr_case.place.s_name }}</td>
+      <td>{{ slr_case.locate.s_name }}</td>
+      <td>{{ slr_case.sex.s_name }}</td>
+      <td>{{ slr_case.d_bdate_to_str()}}</td>
+      <td align="right">
+          <a class="btn btn-sm btn-light" href="{{url_for('slr', id=slr_case.id)}}">Редактировать</a>
+          <a class="btn btn-sm btn-outline-danger" href="{{url_for('slr_delete', id=slr_case.id)}}">Удалить</a>
+      </td>
+  </tr>
+  {% endfor %}
+        </tbody>
+  </table >
+</div>
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      {% if prev_page %}
+      <li class="page-item">
+        <a class="page-link" href="{{url_for('slrcases', page=prev_page)}}" tabindex="-1" aria-disabled="true">Предыдущая</a>
+      </li>
+      {% endif %}
+      {% for p in pages %}
+      <li class="page-item"><a class="page-link" href="{{url_for('slrcases', page=p)}}">{{p}}</a></li>
+      {% endfor %}
+      {% if next_page %}
+      <li class="page-item">
+        <a class="page-link" href="{{url_for('slrcases', page=next_page)}}">Следующая</a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+{% endblock %}

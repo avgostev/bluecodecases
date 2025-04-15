@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card text-dark bg-light mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Реестр Blue code</h5>
+              <p class="card-text">Реестр создан для самостоятельного учета проведенных СЛР по Blue Code*. Тут существует личный список, который видите только вы и общий список на стартовой странице.</p>
+            </div>
+            <div class="card-footer text-muted">
+                *Blue Code (Синий код) — это стандартизированный экстренный код, используемый в большинстве медицинских учреждений для обозначения остановки кровообращения или дыхания у пациента.
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-5">
+        <div class="card text-dark bg-light mb-3 text-center">
+            <div class="card-header">Случаев СЛР в реестре</div>
+            <div class="card-body">
+              <p class="card-text">{{ count_slr_cases }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="card text-dark bg-light mb-3 text-center">
+            <div class="card-header">Выживаемость</div>
+            <div class="card-body">
+              <p class="card-text">{{ result_slr_cases }} %</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card text-dark bg-light mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Как заполнять реестр</h5>
+                <ul class="card-text">
+                    <li>Врач/фельдшер вносит проведенные СЛР по Blue Code.</li>
+                    <li>Учитываем только СЛР проведенные ВНЕ отделения реанимации/анестезиологии. Консультации и констатации НЕ считаются, СЛР в реанимации или операционной НЕ считаются. Если участников СЛР было много, вносит тот, кто оформлял историю болезни.</li>
+                    <li>Скорая помощь (СМП) не относится к Blue Code, но мы учитываем эти СЛР отдельным списком, так что вносите.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card text-dark bg-light mb-3">
+            <div class="card-body">
+                <p  class="card-text">Мы НЕ собираем персональные данные (все анонимно) и НЕ проверяем достоверность информации.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

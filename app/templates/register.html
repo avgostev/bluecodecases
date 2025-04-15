@@ -1,0 +1,29 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content %}
+<div class="container">
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for message in messages %}
+		<div class="alert alert-info" role="alert">{{ message }}</div>
+		{% endfor %}
+	{% endif %}
+	{% endwith %}
+	
+	<form class="form form-horizontal" method="post" role="form">
+		{{ form.hidden_tag() }}
+		{{ wtf.form_errors(form, hiddens="only") }}
+		
+		{{ wtf.form_field(form.name) }}
+		{{ wtf.form_field(form.username) }}
+		{{ wtf.form_field(form.password) }}
+		{{ wtf.form_field(form.password2) }}
+		<br>
+		{{ wtf.form_field(form.submit, button_map={"submit": "light"}) }}
+		
+	</form>
+	<p class="bottom">Уже зарегистрированы? <a href="{{ url_for('login') }}">Войти</a></p>
+	</div>
+{% endblock %}
